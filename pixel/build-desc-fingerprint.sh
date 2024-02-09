@@ -26,7 +26,7 @@ trap 'error_m interrupted!' SIGINT
 
 ### CONSTANTS ###
 readonly script_path="$(cd "$(dirname "$0")";pwd -P)"
-readonly vars_path="${script_path}/../../../vendor/evolution/vars"
+readonly vars_path="${script_path}/../../../vendor/bliss/vars"
 readonly top="${script_path}/../../.."
 
 source "${vars_path}/pixels"
@@ -64,7 +64,7 @@ main() {
     (
       local dv="${vars_path}/${d}"
       source "${dv}"
-      local mk="$(ls ${top}/device/google/*/evolution_${d}.mk)"
+      local mk="$(ls ${top}/device/google/*/bliss_${d}.mk)"
       desc="${d}-user ${android_version} ${build_id} ${build_number} release-keys"
       fingerprint="google/${d}/${d}:${android_version}/${build_id}/${build_number}:user/release-keys"
       sed -i "/PRIVATE_BUILD_DESC/c\    PRIVATE_BUILD_DESC=\"${desc}\"" "${mk}"
@@ -77,7 +77,7 @@ main() {
     (
       local dv="${vars_path}/${d}"
       source "${dv}"
-      local dir="$(ls ${top}/device/google/*/evolution_${d}.mk | sed s#/evolution_${d}.mk##)"
+      local dir="$(ls ${top}/device/google/*/bliss_${d}.mk | sed s#/bliss_${d}.mk##)"
       cd "${dir}"
       if [[ -n "$(git status --porcelain)" ]]; then
         git commit -a -m "Update fingerprint/build description from ${build_id}"
