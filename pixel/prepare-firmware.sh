@@ -27,10 +27,10 @@ trap 'error_m interrupted!' SIGINT
 
 ### CONSTANTS ###
 readonly script_path="$(cd "$(dirname "$0")";pwd -P)"
-readonly vars_path="${script_path}/../../../vendor/evolution/vars"
+readonly vars_path="${script_path}/../../../vendor/bliss/vars"
 readonly top="${script_path}/../../.."
 
-readonly fbpacktool="${top}/evolution/scripts/fbpacktool/fbpacktool.py"
+readonly fbpacktool="${top}/bliss/scripts/fbpacktool/fbpacktool.py"
 readonly qc_image_unpacker="${top}/prebuilts/extract-tools/linux-x86/bin/qc_image_unpacker"
 
 readonly device="${1}"
